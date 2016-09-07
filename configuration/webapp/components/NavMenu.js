@@ -37,6 +37,14 @@ class NavMenu extends React.Component
           ] }
         />
         <ListItem
+          primaryText="Blog"
+          primaryTogglesNestedList={true}
+          nestedItems={ [
+            <ListItem primaryText="View" value="/blog" />,
+            <ListItem primaryText="Edit" value="/blog/edit" />,
+          ] }
+        />
+        <ListItem
           primaryText="To Do"
           primaryTogglesNestedList={true}
           nestedItems={ [

@@ -3,6 +3,60 @@ schema {
   mutation: Mutation
 }
 
+type Blog implements Node {
+  id: ID!
+  Blog_Title: String
+  Blog_Description: String
+  Blog_Content: String
+}
+
+input Blog_addInput {
+  Blog_Content: String!
+  Blog_Title: String!
+  Blog_Description: String!
+  clientMutationId: String!
+}
+
+type Blog_addPayload {
+  BlogsEdge: BlogsEdge
+  Viewer: Viewer
+  clientMutationId: String!
+}
+
+input Blog_deleteInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type Blog_deletePayload {
+  deletedBlogId: ID
+  Viewer: Viewer
+  clientMutationId: String!
+}
+
+input Blog_updateInput {
+  id: ID!
+  Blog_Content: String!
+  Blog_Title: String!
+  Blog_Description: String!
+  clientMutationId: String!
+}
+
+type Blog_updatePayload {
+  Blog: Blog
+  clientMutationId: String!
+}
+
+type BlogsConnection {
+  pageInfo: PageInfo!
+  edges: [BlogsEdge]
+}
+
+type BlogsEdge {
+  node: Blog
+  cursor: String!
+}
+
 type Compendium implements Node {
   id: ID!
   Compendium_FirstTextInput: String
@@ -128,6 +182,9 @@ type Mutation {
   Translaticiarum_add(input: Translaticiarum_addInput!): Translaticiarum_addPayload
   Translaticiarum_delete(input: Translaticiarum_deleteInput!): Translaticiarum_deletePayload
   Translaticiarum_update(input: Translaticiarum_updateInput!): Translaticiarum_updatePayload
+  Blog_add(input: Blog_addInput!): Blog_addPayload
+  Blog_delete(input: Blog_deleteInput!): Blog_deletePayload
+  Blog_update(input: Blog_updateInput!): Blog_updatePayload
 }
 
 interface Node {
@@ -289,6 +346,8 @@ type Viewer implements Node {
   ToDo_TotalCount: Int
   ToDo_CompletedCount: Int
   Translaticiarums(after: String, first: Int, before: String, last: Int): TranslaticiarumsConnection
+  Blogs(after: String, first: Int, before: String, last: Int): BlogsConnection
+  Blog(id: ID): Blog
 }
 
 input Viewer_updateInput {

@@ -24,6 +24,10 @@ import Translaticiarum_Screen from '../../units/urb-example-translaticiarum/weba
 import User_Properties from '../../units/urb-account-management/webapp/components/User_Properties';
 import User_UpdatePassword from '../../units/urb-account-management/webapp/components/User_UpdatePassword';
 
+import Blog_List from '../../units/tony-blog/webapp/components/Blog_List';
+import Blog_Screen from '../../units/tony-blog/webapp/components/Blog_Screen';
+import Blog_PublicItem from '../../units/tony-blog/webapp/components/Blog_PublicItem';
+import Blog_PublicListing from '../../units/tony-blog/webapp/components/Blog_PublicListing';
 
 export const queries = {
   Viewer: () => Relay.QL`query { Viewer }`,
@@ -46,6 +50,16 @@ export default createRoutes(
       </Route>
       <Route path="edit" component={Ensayo_Screen} queries={queries}>
         <IndexRoute component={Ensayo_List} queries={queries} />
+      </Route>
+    </Route>
+
+    <Route path="blog">
+      <IndexRoute component={Blog_PublicListing} queries={queries} />
+      <Route path="item">
+        <Route path=":id" component={Blog_PublicItem} queries={queries} />
+      </Route>
+      <Route path="edit" component={Blog_Screen} queries={queries}>
+        <IndexRoute component={Blog_List} queries={queries} />
       </Route>
     </Route>
 

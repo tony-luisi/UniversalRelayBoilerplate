@@ -11,7 +11,7 @@ export default class ChromeHelmet extends React.Component
   {
     return (
       <Helmet
-        title="Universal Relay Boilerplate"
+        title="Universal Relay Boilerplate!"
         meta={ [
           { name : "description", content: "Boilerplate + examples for React Native (iOS, Android), React (isomorphic, Material-UI), Relay, GraphQL, JWT, Node.js, Apache Cassandra" },
         ] }
